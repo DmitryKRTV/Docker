@@ -28,12 +28,18 @@ touch Dockerfile
 
 **Заполнить Dockerfile**
 ```
-FROM ubuntu
-RUN apt update && apt install -y mc
+FROM ubuntu:latest
+RUN apt update && apt install  openssh-server sudo -y
+RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test
+RUN  echo 'test:test' | chpasswd
+RUN service ssh start
+EXPOSE 22
+CMD ["/usr/sbin/sshd","-D"]
 ```
 Дополнительно:
 - FROM — определяет, что будет использоваться в качестве базового образа (в данном случае образ ubuntu).
 - RUN — запускает команду.
+- [Ссылочка с примером](https://dev.to/s1ntaxe770r/how-to-setup-ssh-within-a-docker-container-i5i)
 ---
 **Создать новый docker образ из Dockerfile**
 ```
