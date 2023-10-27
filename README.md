@@ -21,19 +21,38 @@ touch Dockerfile
 FROM ubuntu
 RUN sudo apt install mc
 ```
-
----
-
-Создаёт новый docker образ из Dockerfile
-```
-FROM ubuntu
-RUN sudo apt install mc
-```
-Описание:
+Дополнительно:
 - FROM — определяет, что будет использоваться в качестве базового образа (в данном случае образ ubuntu).
 - RUN — запускает команду.
-
 ---
+Создать новый docker образ(контейнер) из Dockerfile
+```
+docker build -t myapp:latest .
+```
+ИЛИ
+```
+docker build -f /path/to/Dockerfile --build-arg VERSION=1.0 -t myapp:v1.0 .
+```
+
+Дополнительно:
+- `-t` -  созадёт тег(идентификатор), который связывает образ с конкретной версией или меткой.
+- `-f` -  объявить полный путь к Dockerfile.
+- `.` - путь к директории с Dockerfile
+---
+
+Список образов
+```
+docker images
+```
+---
+
+Запуск контейнера
+```
+docker run 
+```
+---
+
+Построить
 
 Создание контекста:
 
