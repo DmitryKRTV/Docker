@@ -128,7 +128,7 @@ docker container attach «CONTAINER ID»
 
 ---
 
-Создание контекста:
+**Создание контекста:**
 
 ```
 docker context create some-context-label --docker "host=ssh://user@remote_server_ip"
@@ -140,3 +140,25 @@ docker ps
 ```
 
 Source: [Добавить в констект докера машину](https://stackoverflow.com/questions/60425053/vs-code-connect-a-docker-container-in-a-remote-server): смотри комментарий.
+
+---
+**Подключение через link**
+[Источник](https://docs.docker.com/network/links/)
+
+Созать 1 контейнер с имененм
+
+```
+docker run -d --name db training/postgres
+```
+Создать 2-ой контейнер с линкой на первый
+
+```
+docker run -d -P --name web --link db:db training/webapp python app.py
+```
+Теперь **внутри второго контейнера будет доступка ссылка на первый** по имени
+```
+ping db
+```
+Долнительно:
+`--ling database:db` - *database* - имя контейнера, а *db* - алиас(псевдоним) который будет использоваться во втором контейнере
+
