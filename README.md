@@ -19,7 +19,7 @@ touch Dockerfile
 Заполнить Dockerfile
 ```
 FROM ubuntu
-RUN sudo apt install mc
+RUN apt update && apt install -y mc
 ```
 Дополнительно:
 - FROM — определяет, что будет использоваться в качестве базового образа (в данном случае образ ubuntu).
