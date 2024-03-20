@@ -75,3 +75,6 @@ su - user
 ```
 docker run hello-world
 ```
+## ССылки
+https://help.reg.ru/support/servery-vps/oblachnyye-servery/ustanovka-programmnogo-obespecheniya/kak-ustanovit-docker-na-ubuntu
+https://timeweb.cloud/tutorials/docker/kak-ustanovit-docker-na-ubuntu-22-04
